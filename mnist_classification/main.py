@@ -41,6 +41,7 @@ def RNN(x_ , weights  , biases):
     x = tf.unstack(x_, timesteps, 1)
     lstm_cell = rnn.BasicLSTMCell(num_hidden , forget_bias=1.0)
     outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
+    print outputs
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 logits = RNN(x_, weights, biases)
 prediction = tf.nn.softmax(logits)
