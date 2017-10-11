@@ -46,7 +46,7 @@ logits = RNN(x_, weights, biases)
 prediction = tf.nn.softmax(logits)
 
 loss_op=tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits , labels=y_))
-optimizer=tf.train.GradientDiscentOptimizer(learning_rate=learning_rate)
+optimizer=tf.train.GradientDescentOptimizer(learning_rate=learning_rate)
 train_op = optimizer.minimize(loss_op)
 
 correct_pred = tf.equal(tf.argmax(prediction ,1) , tf.argmax(y_ , 1 ))
