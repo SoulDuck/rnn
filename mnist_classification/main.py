@@ -39,7 +39,7 @@ handle 28 sequences of 28 steps for every sample.
 
 def RNN(x_ , weights  , biases):
     x = tf.unstack(x_, timesteps, 1)
-    lstm_cell = rnn.BasicLSTMCell(num_hidden , forgot_bias=1.0)
+    lstm_cell = rnn.BasicLSTMCell(num_hidden , forget_bias=1.0)
     outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
     return tf.matmul(outputs[-1], weights['out']) + biases['out']
 logits = RNN(x_, weights, biases)
